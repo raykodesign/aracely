@@ -1,0 +1,574 @@
+:root {
+    --sunflower-base: #FFCC33; 
+    --sunflower-accent: #FF9900; 
+    --sunflower-dark: #5C4033; 
+    /* Ajuste de transparencia: de 0.9 a 0.95 para el fondo principal */
+    --content-bg-transparent: rgba(255, 255, 255, 0.95);
+    /* [MODIFICADO] Amarillo base con 75% de opacidad (más transparente) */
+    --transparent-sunflower-base: rgba(255, 204, 51, 0.75); 
+}
+
+/* --- Base y Tipografía --- */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #eee; /* Asegura un fondo si el GIF falla */
+}
+
+/* --- Fondo GIF Animado (Sin cambios) --- */
+.background-gif-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; 
+    overflow: hidden;
+}
+
+#gif-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(5px) brightness(0.9);
+}
+
+/* --- Contenedor Principal del Perfil --- */
+.profile-layout {
+    display: flex;
+    width: 900px;
+    max-width: 95%; /* Responsivo: máximo 95% del ancho de la pantalla */
+    background-color: var(--content-bg-transparent);
+    backdrop-filter: blur(10px); 
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 1;
+    margin: 20px; /* Responsivo: margen para no pegarse a los bordes */
+    
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.3), 
+        inset 0 0 0 5px rgba(255, 255, 255, 0.5); 
+    
+    animation: rotating-shadow 5s linear infinite;
+}
+
+@keyframes rotating-shadow {
+    0% {
+        box-shadow: 
+            0 20px 50px rgba(0, 0, 0, 0.3),
+            0 0 30px 5px var(--sunflower-accent), 
+            0 0 0 5px var(--sunflower-base) inset; 
+    }
+    25% {
+        box-shadow: 
+            0 20px 50px rgba(0, 0, 0, 0.3),
+            5px 5px 40px 10px var(--sunflower-accent), 
+            0 0 0 5px var(--sunflower-base) inset; 
+    }
+    50% {
+        box-shadow: 
+            0 20px 50px rgba(0, 0, 0, 0.3),
+            0 0 50px 15px var(--sunflower-accent), 
+            0 0 0 5px var(--sunflower-base) inset;
+    }
+    75% {
+        box-shadow: 
+            0 20px 50px rgba(0, 0, 0, 0.3),
+            -5px -5px 40px 10px var(--sunflower-accent), 
+            0 0 0 5px var(--sunflower-base) inset; 
+    }
+    100% {
+        box-shadow: 
+            0 20px 50px rgba(0, 0, 0, 0.3),
+            0 0 30px 5px var(--sunflower-accent), 
+            0 0 0 5px var(--sunflower-base) inset; 
+    }
+}
+
+
+/* --- Menú Lateral y Centro (Girasol) --- */
+.sidebar-menu {
+    width: 280px;
+    flex-shrink: 0; /* Asegura que la barra lateral mantenga su ancho si es posible */
+    padding: 30px 20px;
+    /* Cambio: Uso de color transparente para dejar ver el fondo */
+    background: linear-gradient(145deg, var(--transparent-sunflower-base) 0%, var(--sunflower-accent) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    box-shadow: inset -5px 0 20px rgba(0, 0, 0, 0.2); 
+}
+
+.sun-center-glow {
+    width: 140px;
+    height: 140px;
+    background-color: var(--sunflower-dark);
+    border-radius: 50%;
+    margin-bottom: 70px; /* Aumentado para dar espacio al nombre/slogan */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.2), 
+                0 0 50px var(--sunflower-accent);
+    animation: simplePulse 4s infinite alternate;
+    position: relative; 
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; 
+    border: 3px solid white;
+}
+
+@keyframes simplePulse {
+    from { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.2), 0 0 40px var(--sunflower-accent); }
+    to { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.4), 0 0 60px var(--sunflower-accent); }
+}
+
+/* --- AJUSTE DE POSICIÓN PARA NOMBRE Y SLOGAN --- */
+.profile-name {
+    position: absolute;
+    bottom: -45px; /* Ajustada la posición */
+    font-family: 'Playfair Display', serif; 
+    font-style: italic;
+    font-size: 1.7em;
+    color: var(--sunflower-dark);
+    font-weight: 700;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+    white-space: nowrap; 
+    
+    /* EFECTO DE MÁQUINA DE ESCRIBIR: Contenedor */
+    width: 100%; 
+    max-width: 10ch; 
+    overflow: hidden; 
+    /* ELIMINADO: border-right (cursor) */
+}
+
+.profile-slogan {
+    position: absolute;
+    bottom: -65px; /* Ajustada la posición */
+    font-size: 0.8em;
+    color: #444;
+    font-weight: 400;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.8);
+    white-space: nowrap; 
+    
+    /* EFECTO DE MÁQUINA DE ESCRIBIR: Contenedor */
+    width: 100%; 
+    max-width: 11ch; 
+    overflow: hidden; 
+    /* ELIMINADO: border-right (cursor) */
+}
+
+/* --- ANIMACIONES DE MÁQUINA DE ESCRIBIR --- */
+
+/* Animación de la aparición del texto */
+@keyframes typewriter {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* ELIMINADA: @keyframes blinking-cursor */
+
+/* Aplica las animaciones al iniciar el perfil (sin cursor parpadeante) */
+.profile-name.animate {
+    animation: 
+        typewriter 1s steps(10) forwards;
+    max-width: 10ch; 
+}
+
+.profile-slogan.animate {
+    animation: 
+        typewriter 1s steps(11) forwards 1s; /* Inicia 1s después del nombre */
+    max-width: 11ch;
+    margin-top: 1.5em; 
+}
+
+
+/* --- Estilo de Botones/Menú (Sin cambios) --- */
+.menu-item {
+    width: 100%;
+    padding: 18px 25px;
+    background-color: rgba(255, 255, 255, 0.15); 
+    color: white;
+    border: none;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 1.1em;
+    font-weight: 600; 
+    cursor: pointer;
+    transition: all 0.3s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(8px);
+}
+
+.menu-item.active {
+    background-color: var(--content-bg-transparent);
+    color: var(--sunflower-accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateX(0);
+    font-weight: 700;
+    text-shadow: 0 0 5px var(--sunflower-accent);
+}
+
+/* --- Área de Contenido --- */
+.content-area {
+    flex-grow: 1;
+    padding: 50px;
+}
+
+#content-title {
+    color: var(--sunflower-dark);
+    border-bottom: 2px solid var(--sunflower-base);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 300;
+}
+
+/* Aplicamos una transición explícita para el fade-out/fade-in controlado por JS */
+#content-display {
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out; 
+    /* El estado inicial sin transición (carga) se define en JS */
+}
+
+/* --- NUEVO: Layout de Perfil (Foto a un lado) --- */
+.profile-content-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+/* --- AJUSTE DE IMAGEN DENTRO DEL CONTENIDO --- */
+.profile-image-side {
+    flex-shrink: 0;
+    width: 200px; 
+    height: 380px;
+    border-radius: 10px; /* Cambiado a un borde cuadrado/redondeado */
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border: none; /* ELIMINADO EL BORDE */
+}
+
+.profile-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el área */
+    border-radius: 0; /* Opcional: si quieres que la imagen se ajuste al borde redondeado del contenedor */
+}
+
+.profile-text-side {
+    flex-grow: 1; 
+}
+
+
+/* --- Galería con Navegación (Carrusel 3D) --- */
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    height: 400px; 
+    perspective: 1000px; 
+    overflow: hidden; 
+    position: relative;
+}
+
+.photo-carousel {
+    display: flex;
+    position: absolute; 
+    transition: transform 0.6s ease-in-out;
+    align-items: center;
+}
+
+.gallery-card {
+    width: 350px; 
+    height: 300px;
+    margin: 0 15px; 
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out, opacity 0.6s;
+    background-color: var(--content-bg-transparent); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    backface-visibility: hidden; 
+    cursor: pointer;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    border-radius: 15px;
+}
+
+/* ESTILO PARA LA TARJETA CENTRAL (ACTIVA) */
+.gallery-card.active {
+    transform: scale(1.1) translateY(-10px); 
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 25px 5px var(--sunflower-accent); 
+    z-index: 10;
+    /* [MODIFICADO] Se eliminó el borde amarillo: border: 5px solid var(--sunflower-base); */
+    cursor: default; 
+}
+
+/* Estilo para las tarjetas laterales (inactivas) */
+.gallery-card:not(.active) {
+    transform: scale(0.9) rotateY(20deg); 
+    opacity: 0.6;
+    filter: brightness(0.7);
+}
+
+
+/* --- ESTILO DE FLECHAS --- */
+.nav-arrow {
+    background: rgba(92, 64, 51, 0.7); 
+    border: 3px solid var(--sunflower-base);
+    color: white; 
+    border-radius: 50%; 
+    width: 50px; 
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em; 
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    line-height: 1;
+}
+
+.nav-arrow:hover:not(:disabled) {
+    background-color: var(--sunflower-accent); 
+    border-color: var(--sunflower-dark);
+    transform: translateY(-50%) scale(1.1); 
+    box-shadow: 0 0 15px 3px white; 
+    color: var(--sunflower-dark); 
+}
+
+#prev-btn { left: 10px; } 
+#next-btn { right: 10px; }
+
+.nav-arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+    box-shadow: none;
+    transform: translateY(-50%);
+}
+
+
+/* --- ESTILO PARA EL REPRODUCTOR DE MÚSICA (Sin cambios) --- */
+.music-player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid var(--sunflower-base);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.youtube-iframe {
+    width: 100%;
+    max-width: 560px; 
+    height: 315px; 
+    border-radius: 10px;
+    border: 5px solid var(--sunflower-dark);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.music-info {
+    font-size: 1.1em;
+    color: var(--sunflower-dark);
+    font-weight: 600;
+}
+
+
+/* --- PANTALLA DE CARGA CSS (Sin cambios) --- */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sunflower-dark); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s, visibility 1s;
+    overflow: hidden; 
+}
+
+/* Pseudo-elemento para el fondo GIF difuminado */
+#loading-screen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    
+    /* ENLACE DE EJEMPLO. Reemplázalo con el enlace de tu GIF. */
+    background: url('https://secure.static.tumblr.com/ef81385d7036d61e32fb3982b9199469/bjkuzbv/A0fohu4c6/tumblr_static_tumblr_static_2sfff88woickos4ks0sckccgg_640.gif') center center / cover no-repeat;
+    
+    /* Aplicar Difuminado (Blur) y Oscurecimiento */
+    filter: blur(10px) brightness(0.6); 
+    transform: scale(1.05); 
+}
+
+
+.loader {
+    border: 8px solid var(--sunflower-base);
+    border-top: 8px solid var(--sunflower-accent);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    margin-top: 20px;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 600;
+    animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes flicker {
+    from { opacity: 1; }
+    to { opacity: 0.7; }
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* ======================================= */
+/* ====== RESPONSIVO: MEDIA QUERIES ====== */
+/* ======================================= */
+
+/* Para pantallas medianas (tabletas y pequeñas laptops: 950px o menos) */
+@media (max-width: 950px) {
+    .profile-layout {
+        width: 100%; /* Ocupa todo el ancho */
+        margin: 10px;
+        flex-direction: column; /* Apila el menú lateral sobre el contenido */
+    }
+    
+    .sidebar-menu {
+        width: 100%; /* El menú lateral ocupa todo el ancho superior */
+        flex-direction: row; /* Los elementos del menú van horizontalmente */
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px 10px 10px 10px;
+    }
+
+    .sun-center-glow {
+        margin-bottom: 20px; /* Reduce el margen */
+        margin-top: 10px;
+    }
+
+    /* Oculta los elementos del centro de girasol para ahorrar espacio en móvil */
+    .profile-photo, .profile-name, .profile-slogan, .sun-center-glow {
+        /* Para esta versión, los mantendremos visibles y apilaremos los botones */
+        margin-bottom: 20px;
+    }
+    
+    .profile-name { bottom: 5px; font-size: 1.5em; max-width: 8ch; }
+    .profile-slogan { bottom: -15px; font-size: 0.7em; max-width: 10ch; }
+
+    .menu-item {
+        width: 45%; /* Dos botones por fila */
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 1em;
+        transform: none !important;
+    }
+    
+    .menu-item:hover {
+        transform: scale(1.05) !important;
+    }
+    
+    .content-area {
+        padding: 20px;
+    }
+
+    .profile-content-layout {
+        flex-direction: column; /* Apila la foto de perfil y el texto */
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-image-side {
+        width: 150px;
+        height: 300px;
+    }
+    
+    /* Ajusta las animaciones de máquina de escribir en responsive (sin cursor) */
+    .profile-name.animate {
+        animation: 
+            typewriter 1s steps(10) forwards;
+    }
+
+    .profile-slogan.animate {
+        animation: 
+            typewriter 1s steps(11) forwards 1s; 
+    }
+}
+
+/* Para pantallas muy pequeñas (móviles: 550px o menos) */
+@media (max-width: 550px) {
+    .sidebar-menu {
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .menu-item {
+        width: 100%; /* Un botón por fila en pantallas muy pequeñas */
+    }
+
+    /* Ocultamos el centro de girasol para dar más espacio al menú y contenido */
+    .sun-center-glow {
+        display: none;
+        margin-bottom: 0;
+    }
+    
+    #content-title {
+        font-size: 1.8em;
+    }
+}

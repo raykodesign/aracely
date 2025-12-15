@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aracely - XatSpace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <div class="loading-text">Loading...</div>
+    </div>
+
+    <div class="background-gif-container">
+        <img src="https://secure.static.tumblr.com/ef81385d7036d61e32fb3982b9199469/bjkuzbv/A0fohu4c6/tumblr_static_tumblr_static_2sfff88woickos4ks0sckccgg_640.gif" alt="Fondo Animado de Girasoles" id="gif-background">
+    </div>
+
+    <div class="profile-layout">
+        
+        <div class="sidebar-menu">
+            <div class="sun-center-glow">
+                <img src="https://xatimg.com/image/hFhajyIHkKg1.jpg" alt="Foto de Perfil" class="profile-photo">
+                
+                <span class="profile-name" id="profile-name">Aracely</span>
+                <span class="profile-slogan" id="profile-slogan">1535030630</span>
+            </div>
+            
+            <button class="menu-item active" data-section="perfil" data-label="👤 Perfil">
+                Perfil
+            </button>
+            <button class="menu-item" data-section="amigos" data-label="🤝 Amigos">
+                Amigos
+            </button>
+            <button class="menu-item" data-section="galeria" data-label="🖼️ Galería">
+                Galería
+            </button>
+            <button class="menu-item" data-section="musica" data-label="🎵 Música">
+                Música
+            </button>
+        </div>
+
+        <div class="content-area">
+            <h2 id="content-title"></h2>
+            <div id="content-display">
+                <p>Bienvenido al perfil. Utiliza el menú lateral para navegar.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
