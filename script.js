@@ -68,9 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         amigos: {
             title: "Amigos",
             html: `
-                <p><strong>Amigos Cercanos:</strong> 5 personas iluminan mi camino.</p>
-                <p><strong>Actividad Reciente:</strong> Publicó un nuevo estado hace 2 horas.</p>
-                <p>Esta sección es el listado de las personas que hacen florecer mi día.</p>
+                <p><strong>Amigos:</strong>Rayko,Viper,Taz,La Nena y Eliza</p>
             `
         },
         galeria: {
@@ -216,3 +214,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
