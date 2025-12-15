@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Música",
             html: `
                 <div class="music-player-container">
-                    <p class="music-info">Disfruta de mi canción favorita mientras exploras mi perfil:</p>
+                    <p class="music-info">Disfruta de mi canción favorita</p>
                     <iframe class="youtube-iframe" 
                         src="https://www.youtube.com/embed/ER9i8WGFgS8?autoplay=0&controls=1&showinfo=0&rel=0" 
                         title="Reproductor de YouTube" 
@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                     </iframe>
-                    <p class="music-info">Pista: Never Gonna Give You Up - Rick Astley (por defecto)</p>
                 </div>
             `
         }
@@ -215,4 +214,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
 });
