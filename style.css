@@ -189,7 +189,7 @@ body {
 .profile-slogan.animate {
     animation: 
         typewriter 1s steps(11) forwards 1s; /* Inicia 1s después del nombre */
-    max-width: 11ch;
+    max-width: 14ch;
     margin-top: 1.5em; 
 }
 
@@ -571,4 +571,5 @@ body {
     #content-title {
         font-size: 1.8em;
     }
+
 }
